@@ -26,9 +26,15 @@
 	- [X] Implement Insert method
 4. When the user chooses [2], the program asks the user what value to delete. The value is deleted if it is found in the BST. An error is shown if no value exists.
 
+	Question:
+		1. Behavior when deleting a value that is duplicated in the tree?
+			1.1. Delete all instances?
+			1.2. Delete first instance encountered in the tree?
+	
 	Tasks:
 	- [~] Write tests for Delete method
 	- [ ] Implement method
+	- [ ] Revise if assumption is broken
 
 5. Choosing [3] displays the minimum value in the BST. 
 
