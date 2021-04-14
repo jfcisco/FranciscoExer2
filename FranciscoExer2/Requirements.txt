@@ -1,0 +1,67 @@
+﻿Using the LINKED LIST IMPLEMENTATION: 
+
+1. Display the following menu:
+	[1] Insert node to binary tree		(Insert)
+	[2] Delete node from binary tree	(Delete)
+	[3] Minimum							(Minimum)
+	[4] Maximum							(Maximum)
+	[5] Successor						(Successor)
+	[6] Predecessor						(Predecessor)
+	[7] Search							(Search)
+	[8] Print BST						(Print)
+
+	Tasks: 
+	- [ ] Design window/s
+	- [ ] Draft code-behind
+2. Start off with an empty tree.
+	Assumption: Ordinary binary search tree?
+
+	Tasks: 
+	- [X] Write Binary Search Tree Data Structure
+3. When the user chooses [1], the program prompts the user to enter a value. After searching for its proper position, the node is then inserted into the BST.
+	Assumption: Integer values only
+
+	Tasks:
+	- [X] Write tests for Insert method
+	- [X] Implement Insert method
+4. When the user chooses [2], the program asks the user what value to delete. The value is deleted if it is found in the BST. An error is shown if no value exists.
+
+	Tasks:
+	- [~] Write tests for Delete method
+	- [ ] Implement method
+
+5. Choosing [3] displays the minimum value in the BST. 
+
+	Tasks:
+	- [ ] Write tests for Minimum method
+	- [ ] Implement method
+
+6. Choosing [4] displays the maximum. 
+
+	Tasks:
+	- [ ] Write tests for Maximum method
+	- [ ] Implement method
+
+7. Choosing [5] would display the successor of a node of which the value has been specified by the user.
+
+	Tasks:
+	- [ ] Write tests for Successor method
+	- [ ] Implement method
+
+8. Choosing [6] displays the predecessor of the node whose value has been specified by the user.
+
+	Tasks:
+	- [ ] Write tests for Predecessor method
+	- [ ] Implement method
+
+9. Choosing [7] searches for the value specified by the user. Display a message if the value is not in the BST.
+
+	Tasks:
+	- [ ] Write tests for Search method
+	- [ ] Implement method
+
+10. Choosing [8] prints out the contents of the BST in increasing order.
+
+	Tasks:
+	- [X] Write tests for Print method
+	- [X] Implement method

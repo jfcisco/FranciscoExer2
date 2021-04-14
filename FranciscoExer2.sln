@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FranciscoExer2", "FranciscoExer2\FranciscoExer2.csproj", "{09ED1019-1558-4A8B-99D6-364A85E74B96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FranciscoExer2.Tests", "FranciscoExer2.Tests\FranciscoExer2.Tests.csproj", "{2136CCE2-F20B-4A1B-92F9-ED0758B15C1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09ED1019-1558-4A8B-99D6-364A85E74B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09ED1019-1558-4A8B-99D6-364A85E74B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09ED1019-1558-4A8B-99D6-364A85E74B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09ED1019-1558-4A8B-99D6-364A85E74B96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2136CCE2-F20B-4A1B-92F9-ED0758B15C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2136CCE2-F20B-4A1B-92F9-ED0758B15C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2136CCE2-F20B-4A1B-92F9-ED0758B15C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2136CCE2-F20B-4A1B-92F9-ED0758B15C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C3A9689-7B99-4DAC-8C02-5DA6212FC4D5}
+	EndGlobalSection
+EndGlobal
