@@ -89,6 +89,11 @@ namespace FranciscoExer2
             }
         }
 
+        public void Delete(int value)
+        {
+            throw new NotImplementedException();
+        }
+
         // Nested node class to represent the nodes of the BST.
         class Node
         {
