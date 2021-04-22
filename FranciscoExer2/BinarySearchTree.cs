@@ -103,10 +103,41 @@ namespace FranciscoExer2
             // Node is null if either the value cannot be found or the tree is empty.
             if (node == null) { return null; }
 
+            // node is the node to be deleted.
             if (value == node.Key)
             {
-                // Delete the node considering the number of its children
-                return null;
+                // Case 1: Node has no children.
+                if (node.Left == null && node.Right == null)
+                {
+                    return null; // Replace node with null reference.
+                }
+                // Case 2: Node has one child (either left or right)
+                // 2.a. Only has left child.
+                if (node.Left != null && node.Right == null)
+                {
+                    // Replace node with left child
+                    return node.Left;
+                }
+
+                //2.b. Only has right child.
+                if (node.Right != null && node.Left == null)
+                {
+                    // Replace node with right child
+                    return node.Right;
+                }
+
+                // Case 3: Node has two children (successor has 0 or 1 child).
+                // By this point node.Left and node.Right is not null.
+                // 2^2 = 4 combinations
+
+                // Find successor of node and check its children
+
+                //3.a. Successor has no children
+
+                //3.b. Successor has 1 child
+                return new Node();
+
+
             }
             else if (value < node.Key)
             {
