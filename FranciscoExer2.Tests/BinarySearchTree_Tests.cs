@@ -36,7 +36,7 @@ namespace FranciscoExer2.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void Maximum_Failure()
         {
             _bst.Maximum();
@@ -128,24 +128,18 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { 0, -1, 2 });
 
+            int actualMin = _bst.Minimum();
+            Assert.AreEqual(-1, actualMin);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void Minimum_Failure_EmptyTree()
         {
-            try
-            {
-                int actualMin = _bst.Minimum();
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Error: BST is empty.", e.Message);
-            }
-
-            // If no exception is thrown, fail the test
-            Assert.Fail();
+            int actualMin = _bst.Minimum();
         }
 
+        // Helper method
         private void InsertMany(int[] testData)
         {
             foreach (int i in testData)
