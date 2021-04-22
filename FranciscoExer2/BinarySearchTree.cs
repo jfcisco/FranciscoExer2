@@ -155,6 +155,12 @@ namespace FranciscoExer2
             }
         }
 
+        // Gets the minimum value inserted to the BST.
+        public int Minimum()
+        {
+            return 0;
+        }
+
         // Nested node class to represent the nodes of the BST.
         class Node
         {
