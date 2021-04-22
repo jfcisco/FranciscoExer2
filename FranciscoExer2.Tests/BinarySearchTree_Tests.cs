@@ -9,14 +9,14 @@ namespace FranciscoExer2.Tests
     public class BinarySearchTree_Tests
     {
         private BinarySearchTree _bst;
-        
+
         [TestInitialize]
         public void InitializeTests()
         {
             _bst = new BinarySearchTree();
             Assert.IsNotNull(_bst);
         }
-                
+
         [TestMethod]
         public void Insert_Success()
         {
@@ -72,13 +72,9 @@ namespace FranciscoExer2.Tests
         {
             int[] testData = { 2, 0, -1, 1, 6, 4, 5 };
 
-            foreach(int i in testData)
-            {
-                _bst.Insert(i);
-            }
+            InsertMany(testData);
 
             _bst.Delete(toDelete);
-
             string actualContents = _bst.Print();
 
             testData = testData.Where(i => i != toDelete).ToArray();
@@ -105,12 +101,7 @@ namespace FranciscoExer2.Tests
         [TestMethod]
         public void Delete_Failure_ValueDoesNotExist()
         {
-            int[] testData = { 1, 2, 3 };
-
-            foreach (int i in testData)
-            {
-                _bst.Insert(i);
-            }
+            InsertMany(new int[] { 1, 2, 3 });
 
             _bst.Delete(4);
             string bstContents = _bst.Print();
@@ -121,6 +112,46 @@ namespace FranciscoExer2.Tests
         public void Delete_Success_ValueIsDuplicated()
         {
             // TODO
+        }
+
+        [TestMethod]
+        public void Minimum_Success_RootMinimum()
+        {
+            InsertMany(new int[] { -1, 2, 0 });
+
+            int actualMin = _bst.Minimum();
+            Assert.AreEqual(-1, actualMin);
+        }
+
+        [TestMethod]
+        public void Minimum_Success_LeftTreeMinimum()
+        {
+            InsertMany(new int[] { 0, -1, 2 });
+
+        }
+
+        [TestMethod]
+        public void Minimum_Failure_EmptyTree()
+        {
+            try
+            {
+                int actualMin = _bst.Minimum();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Error: BST is empty.", e.Message);
+            }
+
+            // If no exception is thrown, fail the test
+            Assert.Fail();
+        }
+
+        private void InsertMany(int[] testData)
+        {
+            foreach (int i in testData)
+            {
+                _bst.Insert(i);
+            }
         }
     }
 }
