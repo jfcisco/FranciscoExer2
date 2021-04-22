@@ -41,7 +41,7 @@ namespace FranciscoExer2
         public int Maximum()
         {
             // Handle scenario when BST is empty.
-            if (Root == null) throw new Exception("Error: BST is empty.");
+            if (Root == null) throw new InvalidOperationException("Cannot find maximum if BST is empty.");
 
             // Look for the maximum value iteratively.
             Node current = Root;
@@ -156,9 +156,19 @@ namespace FranciscoExer2
         }
 
         // Gets the minimum value inserted to the BST.
+        // Throws InvalidOperationException if tree is empty.
         public int Minimum()
         {
-            return 0;
+            if (Root == null) { throw new InvalidOperationException("Cannot find minimum if BST is empty.");  }
+
+            Node current = Root;
+
+            while (current.Left != null)
+            {
+                current = current.Left;
+            }
+
+            return current.Key;
         }
 
         // Nested node class to represent the nodes of the BST.
