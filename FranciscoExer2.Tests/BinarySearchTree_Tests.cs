@@ -48,7 +48,11 @@ namespace FranciscoExer2.Tests
             _bst.Insert(4);
             _bst.Insert(1);
             _bst.Insert(6);
-            Assert.AreEqual("1,4,6", _bst.Print());
+
+            int[] expectedInts = { 1, 4, 6 };
+            string expectedString = string.Join(',', expectedInts);
+
+            Assert.AreEqual(expectedString, _bst.Print());
         }
 
         [TestMethod]
@@ -59,12 +63,14 @@ namespace FranciscoExer2.Tests
 
 
         [TestMethod]
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
+        [DataRow(5)] // O child
+        [DataRow(6)] // 1 left child
+        [DataRow(4)] // 1 right child
+        [DataRow(2)] // 2 children, succ. 1 child
+        [DataRow(0)] // 2 children, succ. 0 children
         public void Delete_Success(int toDelete)
         {
-            int[] testData = { 1, 2, 3 };
+            int[] testData = { 2, 0, -1, 1, 6, 4, 5 };
 
             foreach(int i in testData)
             {
@@ -76,19 +82,27 @@ namespace FranciscoExer2.Tests
             string actualContents = _bst.Print();
 
             testData = testData.Where(i => i != toDelete).ToArray();
+            Array.Sort(testData);
             string expectedContents = string.Join(",", testData);
             Assert.AreEqual(expectedContents, actualContents);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void Delete_Failure_EmptyTree()
         {
             _bst.Delete(1);
+
+            try
+            {
+                _bst.Maximum();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Error: BST is empty.", e.Message);
+            }
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void Delete_Failure_ValueDoesNotExist()
         {
             int[] testData = { 1, 2, 3 };
@@ -99,6 +113,8 @@ namespace FranciscoExer2.Tests
             }
 
             _bst.Delete(4);
+            string bstContents = _bst.Print();
+            Assert.AreEqual("1,2,3", bstContents);
         }
 
         [TestMethod]
