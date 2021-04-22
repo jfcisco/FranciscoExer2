@@ -171,6 +171,18 @@ namespace FranciscoExer2
             return current.Key;
         }
 
+        // Gives the successor 
+        public int Successor(int key)
+        {
+            return 0;
+        }
+
+        // Recursively finds the successor node of a given node.
+        private Node Successor(Node node)
+        {
+            return new Node();
+        }
+
         // Nested node class to represent the nodes of the BST.
         class Node
         {
