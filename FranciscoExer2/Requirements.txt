@@ -39,8 +39,8 @@
 5. Choosing [3] displays the minimum value in the BST. 
 
 	Tasks:
-	- [~] Write tests for Minimum method
-	- [ ] Implement method
+	- [X] Write tests for Minimum method
+	- [X] Implement method
 
 6. Choosing [4] displays the maximum. 
 
