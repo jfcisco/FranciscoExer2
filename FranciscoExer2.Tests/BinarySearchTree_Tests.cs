@@ -1,4 +1,5 @@
 using FranciscoExer2;
+using FranciscoExer2.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -119,8 +120,7 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { -1, 2, 0 });
 
-            int actualMin = _bst.Minimum();
-            Assert.AreEqual(-1, actualMin);
+            Assert.AreEqual(-1, _bst.Minimum());
         }
 
         [TestMethod]
@@ -128,8 +128,7 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { 0, -1, 2 });
 
-            int actualMin = _bst.Minimum();
-            Assert.AreEqual(-1, actualMin);
+            Assert.AreEqual(-1, _bst.Minimum());
         }
 
         [TestMethod]
@@ -139,7 +138,40 @@ namespace FranciscoExer2.Tests
             int actualMin = _bst.Minimum();
         }
 
-        // Helper method
+        [TestMethod]
+        [DataRow(0)]
+        [DataRow(1)]
+        public void Successor_Success(int testInt)
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+
+            Assert.Equals(testInt + 1, _bst.Successor(testInt));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void Successor_Failure_EmptyTree()
+        {
+            _bst.Successor(1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void Successor_Failure_KeyNotFound()
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+            _bst.Successor(3);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(SuccessorNotFoundException))]
+        public void Successor_Failure_NoSuccessor()
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+            _bst.Successor(2);
+        }
+
+        // HELPER METHODS
         private void InsertMany(int[] testData)
         {
             foreach (int i in testData)
