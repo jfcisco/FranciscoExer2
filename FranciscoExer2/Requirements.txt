@@ -45,8 +45,8 @@
 6. Choosing [4] displays the maximum. 
 
 	Tasks:
-	- [ ] Write tests for Maximum method
-	- [ ] Implement method
+	- [X] Write tests for Maximum method
+	- [X] Implement method
 
 7. Choosing [5] would display the successor of a node of which the value has been specified by the user.
 
