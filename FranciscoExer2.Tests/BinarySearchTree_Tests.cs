@@ -137,7 +137,7 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { 1, 0, 2 });
 
-            Assert.Equals(testInt + 1, _bst.GetSuccessor(testInt));
+            Assert.AreEqual(testInt + 1, _bst.GetSuccessor(testInt));
         }
 
         [TestMethod]
