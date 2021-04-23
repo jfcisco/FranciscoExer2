@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FranciscoExer2.Exceptions;
+using System;
 using System.Text;
 
 namespace FranciscoExer2
@@ -182,16 +182,84 @@ namespace FranciscoExer2
             }
         }
 
-        // Gives the successor 
-        public int GetSuccessor(int key)
+        // Gives the successor
+        // Throws KeyNotFoundException if the value is not a key in the BST.
+        // Throws SuccessorNotFoundException if there is no successor.
+        public int GetSuccessor(int value)
         {
-            return 0;
+            // Search the whole subtree for the integer after value in the BST.
+            Node node = Search(Root, value);
+            return GetSuccessor(node).Key;
         }
 
         // Recursively finds the successor node of a given node.
         private Node GetSuccessor(Node node)
         {
-            return new Node();
+            if (node.Right != null)
+            {
+                return GetMinimum(node.Right);
+            }
+
+            // Look for the successor higher in the tree
+            Node currentNode = node;
+            Node higherNode = GetParent(Root, node);
+
+            while (higherNode != null && higherNode.Right == currentNode)
+            {
+                currentNode = higherNode;
+                higherNode = GetParent(Root, currentNode);
+            }
+
+            // Return higherNode only if it's not null, otherwise thrown an exception.
+            return higherNode ?? throw new SuccessorNotFoundException();
+        }
+
+        // Finds the parent of the node in the BST given with the root root.
+        // Returns the parent of the node, or null if the Root of the overall BST is given.
+        private Node GetParent(Node root, Node node)
+        {
+            // Only the root node does not have a parent.
+            if (node == Root) { return null; }
+
+            // Base case: Parent found!
+            if (root.Left == node || root.Right == node) 
+            {
+                return root;
+            }
+
+            // Traverse to find the parent of the node.
+            if (node.Key < root.Key)
+            {
+                return GetParent(root.Left, node);
+            }
+            else
+            {
+                return GetParent(root.Right, node);
+            }
+        }
+
+        // Searches for the Node with a key matching the given value in the subtree with the given root, or throws a KeyNotFoundException if no such node exists.
+        private Node Search(Node root, int value)
+        {
+            // Base Case
+            if (value == root.Key) { return root; }
+
+            // If a leaf was reached, throw not found exception
+            if (root.Left == null && root.Right == null)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            // Traverse subtree to find Node with key matching value.
+            if (value < root.Key)
+            {
+                return Search(root.Left, value);
+            }
+            else // value > root.Key
+            {
+                return Search(root.Right, value);
+            }
+
         }
 
         // Nested node class to represent the nodes of the BST.
