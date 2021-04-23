@@ -23,7 +23,7 @@ namespace FranciscoExer2.Tests
         {
             int testData = 4;
             _bst.Insert(testData);
-            Assert.AreEqual(testData, _bst.Maximum());
+            Assert.AreEqual(testData, _bst.GetMaximum());
         }
 
         [TestMethod]
@@ -33,14 +33,14 @@ namespace FranciscoExer2.Tests
             _bst.Insert(1);
             _bst.Insert(6);
 
-            Assert.AreEqual(6, _bst.Maximum());
+            Assert.AreEqual(6, _bst.GetMaximum());
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Maximum_Failure()
         {
-            _bst.Maximum();
+            _bst.GetMaximum();
         }
 
         [TestMethod]
@@ -88,15 +88,7 @@ namespace FranciscoExer2.Tests
         public void Delete_Failure_EmptyTree()
         {
             _bst.Delete(1);
-
-            try
-            {
-                _bst.Maximum();
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Error: BST is empty.", e.Message);
-            }
+            Assert.AreEqual("", _bst.Print());
         }
 
         [TestMethod]
@@ -120,7 +112,7 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { -1, 2, 0 });
 
-            Assert.AreEqual(-1, _bst.Minimum());
+            Assert.AreEqual(-1, _bst.GetMinimum());
         }
 
         [TestMethod]
@@ -128,14 +120,14 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { 0, -1, 2 });
 
-            Assert.AreEqual(-1, _bst.Minimum());
+            Assert.AreEqual(-1, _bst.GetMinimum());
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Minimum_Failure_EmptyTree()
         {
-            int actualMin = _bst.Minimum();
+            int actualMin = _bst.GetMinimum();
         }
 
         [TestMethod]
@@ -145,14 +137,14 @@ namespace FranciscoExer2.Tests
         {
             InsertMany(new int[] { 1, 0, 2 });
 
-            Assert.Equals(testInt + 1, _bst.Successor(testInt));
+            Assert.Equals(testInt + 1, _bst.GetSuccessor(testInt));
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Successor_Failure_EmptyTree()
         {
-            _bst.Successor(1);
+            _bst.GetSuccessor(1);
         }
 
         [TestMethod]
@@ -160,7 +152,7 @@ namespace FranciscoExer2.Tests
         public void Successor_Failure_KeyNotFound()
         {
             InsertMany(new int[] { 1, 0, 2 });
-            _bst.Successor(3);
+            _bst.GetSuccessor(3);
         }
 
         [TestMethod]
@@ -168,7 +160,7 @@ namespace FranciscoExer2.Tests
         public void Successor_Failure_NoSuccessor()
         {
             InsertMany(new int[] { 1, 0, 2 });
-            _bst.Successor(2);
+            _bst.GetSuccessor(2);
         }
 
         // HELPER METHODS
