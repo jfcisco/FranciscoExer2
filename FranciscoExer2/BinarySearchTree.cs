@@ -37,9 +37,36 @@ namespace FranciscoExer2
             }
         }
 
-        // Gives the maximum value of the BST
-        public int Maximum()
+        // Returns the minimum value inserted to the BST.
+        // Throws InvalidOperationException if tree is empty.
+        public int GetMinimum()
         {
+            return GetMinimum(Root).Key;
+        }
+
+        // Generalized GetMinimum method
+        // Returns the node containing the minimum node of a subtree
+        private Node GetMinimum(Node root)
+        {
+            if (root == null) throw new InvalidOperationException("Cannot find minimum if BST is empty.");
+
+            // Look for the minimum value iteratively.
+            Node current = root;
+
+            while (current.Left != null)
+            {
+                current = current.Left;
+            }
+
+            return current;
+        }
+
+        // Returns the maximum value of the BST
+        // Throws InvalidOperationException if tree is empty.
+        public int GetMaximum()
+        {
+            // TODO: Write generalized, private GetMaximum method
+
             // Handle scenario when BST is empty.
             if (Root == null) throw new InvalidOperationException("Cannot find maximum if BST is empty.");
 
@@ -127,17 +154,17 @@ namespace FranciscoExer2
                 }
 
                 // Case 3: Node has two children (successor has 0 or 1 child).
-                // By this point node.Left and node.Right is not null.
-                // 2^2 = 4 combinations
+                // By this point node.Left and node.Right are not null.
 
-                // Find successor of node and check its children
+                Node delSuccess = GetMinimum(node.Right);
 
-                //3.a. Successor has no children
+                int tempKey = delSuccess.Key;
+                // TODO: Can make this more elegant, this is a hack:
+                // Delete already covers both cases (0 child and 1 child)
+                Delete(node, delSuccess.Key);
+                node.Key = tempKey;
 
-                //3.b. Successor has 1 child
-                return new Node();
-
-
+                return node;
             }
             else if (value < node.Key)
             {
@@ -155,30 +182,14 @@ namespace FranciscoExer2
             }
         }
 
-        // Gets the minimum value inserted to the BST.
-        // Throws InvalidOperationException if tree is empty.
-        public int Minimum()
-        {
-            if (Root == null) { throw new InvalidOperationException("Cannot find minimum if BST is empty.");  }
-
-            Node current = Root;
-
-            while (current.Left != null)
-            {
-                current = current.Left;
-            }
-
-            return current.Key;
-        }
-
         // Gives the successor 
-        public int Successor(int key)
+        public int GetSuccessor(int key)
         {
             return 0;
         }
 
         // Recursively finds the successor node of a given node.
-        private Node Successor(Node node)
+        private Node GetSuccessor(Node node)
         {
             return new Node();
         }
