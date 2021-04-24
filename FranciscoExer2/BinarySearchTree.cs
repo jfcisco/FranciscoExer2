@@ -51,7 +51,7 @@ namespace FranciscoExer2
         /// <exception cref="System.InvalidOperationException">Thrown when the tree is empty</exception>
         public int GetMinimum()
         {
-            if (Root == null) { throw new InvalidOperationException("Cannot find minimum if BST is empty.");  }
+            if (IsEmpty) { throw new InvalidOperationException("Cannot find minimum if BST is empty.");  }
 
             return GetMinimum(Root).Key;
         }
@@ -77,7 +77,7 @@ namespace FranciscoExer2
         public int GetMaximum()
         {
             // Handle scenario when BST is empty.
-            if (Root == null) throw new InvalidOperationException("Cannot find maximum if BST is empty.");
+            if (IsEmpty) throw new InvalidOperationException("Cannot find maximum if BST is empty.");
 
             return GetMaximum(Root).Key;
         }
@@ -209,7 +209,7 @@ namespace FranciscoExer2
         /// <exception cref="PredecessorNotFoundException">Thrown if the given value has no predecessor (i.e., minimum is passed in).</exception>
         public int GetPredecessor(int value)
         {
-            if (Root == null) { throw new KeyNotFoundException();  }
+            if (IsEmpty) { throw new KeyNotFoundException();  }
 
             // Search the entire BST for the node with the given value.
             Node node = Search(Root, value);
@@ -246,7 +246,7 @@ namespace FranciscoExer2
         /// <exception cref="SuccessorNotFoundException">Thrown if successor cannot be found</exception>
         public int GetSuccessor(int value)
         {
-            if (Root == null) { throw new KeyNotFoundException(); }
+            if (IsEmpty) { throw new KeyNotFoundException(); }
 
             // Search the whole subtree for the integer after value in the BST.
             Node node = Search(Root, value);
@@ -341,7 +341,7 @@ namespace FranciscoExer2
             }
 
         }
-        bool IsEmpty => Root == null;
+        public bool IsEmpty => Root == null;
 
         /// <summary>
         /// Nested node class to represent the nodes of the BST.
