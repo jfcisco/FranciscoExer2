@@ -41,6 +41,8 @@ namespace FranciscoExer2
         // Throws InvalidOperationException if tree is empty.
         public int GetMinimum()
         {
+            if (Root == null) { throw new InvalidOperationException("Cannot find minimum if BST is empty.");  }
+
             return GetMinimum(Root).Key;
         }
 
@@ -65,20 +67,24 @@ namespace FranciscoExer2
         // Throws InvalidOperationException if tree is empty.
         public int GetMaximum()
         {
-            // TODO: Write generalized, private GetMaximum method
-
             // Handle scenario when BST is empty.
             if (Root == null) throw new InvalidOperationException("Cannot find maximum if BST is empty.");
 
+            return GetMaximum(Root).Key;
+        }
+
+        // Returns the maximum node of the subtree with the given root, or null if the maximum node does not exist;
+        private Node GetMaximum(Node root)
+        {
             // Look for the maximum value iteratively.
-            Node current = Root;
+            Node current = root;
 
             while (current.Right != null)
             {
                 current = current.Right;
             }
 
-            return current.Key;
+            return current;
         }
 
         // Returns a string representation of the BST (i.e., lists its elements in ascending order).
@@ -181,18 +187,54 @@ namespace FranciscoExer2
                 return node;
             }
         }
+        /* Gives the predecessor of the value in the list.
+         * Throws InvalidOperationException if the tree is empty.
+         * Throws KeyNotFound if no node has a key matching the given value.
+         * Throws PredecessorNotFoundException if the given value has no predecessor (i.e., minimum is passed in).
+         */
+        public int GetPredecessor(int value)
+        {
+            if (Root == null) { throw new InvalidOperationException();  }
 
-        // Gives the successor
-        // Throws KeyNotFoundException if the value is not a key in the BST.
-        // Throws SuccessorNotFoundException if there is no successor.
+            // Search the entire BST for the node with the given value.
+            Node node = Search(Root, value);
+            return GetPredecessor(node).Key;
+        }
+
+        private Node GetPredecessor(Node node)
+        {
+            if (node.Left != null)
+            {
+                return GetMaximum(node.Left);
+            }
+
+            // Look for the predecessor higher in the tree
+            Node current = node;
+            Node higherNode = GetParent(Root, node);
+
+            while(higherNode != null && higherNode.Left == current)
+            {
+                current = higherNode;
+                higherNode = GetParent(Root, current);
+            }
+
+            // Return higherNode only if not null, otherwise throw an exception.
+            return higherNode ?? throw new PredecessorNotFoundException();
+        }
+
+        /* Gives the successor of the value in the list
+           Throws InvalidOperationException if the tree is empty.
+           Throws KeyNotFoundException if the value is not a key in the BST.
+           Throws SuccessorNotFoundException if successor cannot be found.*/
         public int GetSuccessor(int value)
         {
+            if (Root == null) { throw new InvalidOperationException(); }
+
             // Search the whole subtree for the integer after value in the BST.
             Node node = Search(Root, value);
             return GetSuccessor(node).Key;
         }
 
-        // Recursively finds the successor node of a given node.
         private Node GetSuccessor(Node node)
         {
             if (node.Right != null)
@@ -232,7 +274,7 @@ namespace FranciscoExer2
             {
                 return GetParent(root.Left, node);
             }
-            else
+            else // node.Key >= root.Key
             {
                 return GetParent(root.Right, node);
             }
@@ -261,6 +303,8 @@ namespace FranciscoExer2
             }
 
         }
+
+        bool IsEmpty => Root == null;
 
         // Nested node class to represent the nodes of the BST.
         class Node
