@@ -5,8 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FranciscoExer2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Binary Search Tree" Height="450" Width="400">
+    <Grid Margin="30 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="20" />
+            
+        </Grid.RowDefinitions>
+        
+        <TextBlock x:Name="Header"
+                   FontSize="24"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+            Binary Search Tree
+        </TextBlock>
+
+        <!-- Status Message Box -->
+        <TextBlock Text="Status:"
+               FontSize="16"
+               Grid.Row="1"
+               />
+        <TextBlock x:Name="StatusText"
+                   FontSize="16"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="1"
+                   Margin="0 0 0 10"
+                   d:Text="16 inserted to BST.">
+        </TextBlock>
+
+        <!-- Input Textbox -->
+        <TextBlock Text="Input an Integer:"
+               FontSize="16"
+               Grid.Row="2"
+                   TextWrapping="Wrap"
+               />
+        <TextBox x:Name="InputBox"
+                   FontSize="16"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   Margin="0 0 0 10">
+        </TextBox>
+        
+        <!-- Action Buttons -->
+        <Button Content="Insert"
+                Grid.Row="3" 
+                Grid.ColumnSpan="2"
+                Margin="5 0 5 10"/>
+        
+        <Button Content="Delete"
+                Grid.Row="4" 
+                Grid.ColumnSpan="2"
+                Margin="5 0 5 10"/>
+        
+        <Button Content="Minimum"
+                Grid.Row="5" 
+                Margin="5 0 5 10"/>
+
+        <Button Content="Maximum"
+                Grid.Row="5" 
+                Grid.Column="1"
+                Margin="5 0 5 10"/>
+
+        <Button Content="Predecessor"
+                Grid.Row="3" 
+                Grid.Column="2"
+                Margin="5 0 5 10"/>
+
+        <Button Content="Successor"
+                Grid.Row="3" 
+                Grid.Column="3"
+                Margin="5 0 5 10"/>
+
+        <Button Content="Search"
+                Grid.Row="4" 
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="5 0 5 10"/>
+
+        <Button Content="Print"
+                Grid.Row="5" 
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="5 0 5 10"/>
 
     </Grid>
+ 
 </Window>
