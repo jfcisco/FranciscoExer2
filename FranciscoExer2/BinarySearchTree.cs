@@ -321,14 +321,11 @@ namespace FranciscoExer2
         // Searches for the Node with a key matching the given value in the subtree with the given root, or throws a KeyNotFoundException if no such node exists.
         private Node Search(Node root, int value)
         {
+            // If a leaf was reached, throw not found exception
+            if (root == null) { throw new KeyNotFoundException(); }
+
             // Base Case
             if (value == root.Key) { return root; }
-
-            // If a leaf was reached, throw not found exception
-            if (root.Left == null && root.Right == null)
-            {
-                throw new KeyNotFoundException();
-            }
 
             // Traverse subtree to find Node with key matching value.
             if (value < root.Key)
