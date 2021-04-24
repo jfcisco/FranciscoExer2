@@ -163,6 +163,33 @@ namespace FranciscoExer2.Tests
             _bst.GetSuccessor(2);
         }
 
+        [TestMethod]
+        [DataRow(1)]
+        [DataRow(2)]
+        public void Predecessor_Success(int testInt)
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+
+            Assert.AreEqual(testInt -1 , _bst.GetPredecessor(testInt));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void Predecessor_Failure_EmptyTree()
+        {
+            _bst.GetPredecessor(0);
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(PredecessorNotFoundException))]
+        public void Predecessor_Failure_NoPredecessor()
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+
+            _bst.GetPredecessor(0);
+        }
+
         // HELPER METHODS
         private void InsertMany(int[] testData)
         {
