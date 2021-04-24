@@ -51,14 +51,14 @@
 7. Choosing [5] would display the successor of a node of which the value has been specified by the user.
 
 	Tasks:
-	- [ ] Write tests for Successor method
-	- [ ] Implement method
+	- [X] Write tests for Successor method
+	- [X] Implement method
 
 8. Choosing [6] displays the predecessor of the node whose value has been specified by the user.
 
 	Tasks:
-	- [ ] Write tests for Predecessor method
-	- [ ] Implement method
+	- [X] Write tests for Predecessor method
+	- [X] Implement method
 
 9. Choosing [7] searches for the value specified by the user. Display a message if the value is not in the BST.
 
