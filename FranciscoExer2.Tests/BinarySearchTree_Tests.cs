@@ -97,14 +97,16 @@ namespace FranciscoExer2.Tests
             InsertMany(new int[] { 1, 2, 3 });
 
             _bst.Delete(4);
-            string bstContents = _bst.Print();
-            Assert.AreEqual("1,2,3", bstContents);
+            Assert.AreEqual("1,2,3", _bst.Print());
         }
 
         [TestMethod]
         public void Delete_Success_ValueIsDuplicated()
         {
-            // TODO
+            InsertMany(new int[] { 1, 2, 3, 3, 4 });
+
+            _bst.Delete(3);
+            Assert.AreEqual("1,2,3,4", _bst.Print());
         }
 
         [TestMethod]
@@ -141,7 +143,7 @@ namespace FranciscoExer2.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(KeyNotFoundException))]
         public void Successor_Failure_EmptyTree()
         {
             _bst.GetSuccessor(1);
@@ -174,7 +176,7 @@ namespace FranciscoExer2.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(KeyNotFoundException))]
         public void Predecessor_Failure_EmptyTree()
         {
             _bst.GetPredecessor(0);
@@ -195,6 +197,23 @@ namespace FranciscoExer2.Tests
             InsertMany(new int[] { 1, 0, 2 });
 
             _bst.GetPredecessor(0);
+        }
+
+        [TestMethod]
+        [DataRow(0)]
+        [DataRow(1)]
+        [DataRow(2)]
+        public void Contains_Success(int value)
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+            Assert.IsTrue(_bst.Contains(value));
+        }
+
+        [TestMethod]
+        public void Contains_Failure_ValueNotFound()
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+            Assert.IsFalse(_bst.Contains(3));
         }
 
         // HELPER METHODS
