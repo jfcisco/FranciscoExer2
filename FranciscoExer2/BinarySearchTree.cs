@@ -176,10 +176,10 @@ namespace FranciscoExer2
                 // Case 3: Node has two children (successor has 0 or 1 child). By this point node.Left and node.Right are not null.
 
                 // Replace node's key with its successor's:
-                Node delSuccess = GetMinimum(node.Right);
-                int tempKey = delSuccess.Key;
-                // TODO: Is there a way to make this more elegant?
-                Delete(node, delSuccess.Key);
+                Node successKey = GetMinimum(node.Right);
+                int tempKey = successKey.Key;
+                // Delete the successor in the subtree, and update right child of node.
+                node.Right = Delete(node.Right, successKey.Key);
                 node.Key = tempKey;
 
                 return node;
