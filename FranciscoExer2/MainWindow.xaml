@@ -118,20 +118,24 @@
 
         <Button Content="Maximum"
                 Grid.Row="5" 
-                Grid.Column="1"/>
+                Grid.Column="1"
+                Click="Maximum_Click"/>
 
         <Button Content="Predecessor"
                 Grid.Row="3" 
-                Grid.Column="2"/>
+                Grid.Column="2"
+                Click="Predecessor_Click"/>
 
         <Button Content="Successor"
                 Grid.Row="3" 
-                Grid.Column="3"/>
+                Grid.Column="3"
+                Click="Successor_Click"/>
 
         <Button Content="Search"
                 Grid.Row="4" 
                 Grid.Column="2"
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2"
+                Click="Search_Click"/>
 
         <Button Content="Print"
                 Grid.Row="5" 
