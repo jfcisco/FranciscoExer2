@@ -46,9 +46,7 @@ namespace FranciscoExer2.Tests
         [TestMethod]
         public void Print_Success_NonEmptyTree()
         {
-            _bst.Insert(4);
-            _bst.Insert(1);
-            _bst.Insert(6);
+            InsertMany(new int[] { 4, 1, 6 });
 
             int[] expectedInts = { 1, 4, 6 };
             string expectedString = string.Join(',', expectedInts);
@@ -107,6 +105,26 @@ namespace FranciscoExer2.Tests
 
             _bst.Delete(3);
             Assert.AreEqual("1,2,3,4", _bst.Print());
+        }
+
+        [TestMethod]
+        public void Predecessor_Success_TreeHasDuplicates()
+        {
+            InsertMany(new int[] { 3, 1, 2, 2, 3, 4 });
+            Assert.AreEqual(2, _bst.GetPredecessor(3));
+
+            _bst.Delete(2);
+            Assert.AreEqual(2, _bst.GetPredecessor(3));
+        }
+
+        [TestMethod]
+        public void Successor_Success_TreeHasDuplicates()
+        {
+            InsertMany(new int[] { 3, 1, 2, 2, 3, 4 });
+            Assert.AreEqual(3, _bst.GetSuccessor(3));
+            
+            _bst.Delete(3);
+            Assert.AreEqual(4, _bst.GetSuccessor(3));
         }
 
         [TestMethod]
@@ -210,7 +228,7 @@ namespace FranciscoExer2.Tests
         }
 
         [TestMethod]
-        public void Contains_Failure_ValueNotFound()
+        public void Contains_Success_ValueNotFound()
         {
             InsertMany(new int[] { 1, 0, 2 });
             Assert.IsFalse(_bst.Contains(3));
