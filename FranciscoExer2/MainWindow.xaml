@@ -5,7 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FranciscoExer2"
         mc:Ignorable="d"
-        Title="Binary Search Tree" Height="450" Width="400">
+        Title="Binary Search Tree" Height="450" Width="500"
+        Background="#F1FAEE"
+        Foreground="#1D3557">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5 0 5 10"/>
+            <Setter Property="Foreground" Value="#1D3557" />
+            <Setter Property="Background" Value="#A8DADC"/>
+            <Setter Property="FontSize" Value="16"/>
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Background" Value="Red"/>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Margin="30 0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -15,29 +33,28 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="20" />
-            
         </Grid.RowDefinitions>
-        
+
         <TextBlock x:Name="Header"
                    FontSize="24"
                    Grid.Row="0"
                    Grid.Column="0"
                    Grid.ColumnSpan="4"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
+                   VerticalAlignment="Center"
+                   Foreground="#1D3557"     FontWeight="Bold">
             Binary Search Tree
         </TextBlock>
 
         <!-- Status Message Box -->
         <TextBlock Text="Status:"
-               FontSize="16"
-               Grid.Row="1"
+                   FontSize="16"
+                   Grid.Row="1"
                />
         <TextBlock x:Name="StatusText"
                    FontSize="16"
@@ -45,13 +62,13 @@
                    Grid.ColumnSpan="3"
                    Grid.Row="1"
                    Margin="0 0 0 10"
-                   d:Text="16 inserted to BST.">
-        </TextBlock>
+                   d:Text="16 inserted to BST."/>
+
 
         <!-- Input Textbox -->
         <TextBlock Text="Input an Integer:"
-               FontSize="16"
-               Grid.Row="2"
+                   FontSize="16"
+                   Grid.Row="2"
                    TextWrapping="Wrap"
                />
         <TextBox x:Name="InputBox"
@@ -59,51 +76,62 @@
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
                    Grid.Row="2"
-                   Margin="0 0 0 10">
-        </TextBox>
-        
+                   Margin="0 0 0 20"
+                 />
+
+
         <!-- Action Buttons -->
-        <Button Content="Insert"
-                Grid.Row="3" 
+        <Button Grid.Row="3" 
+                Grid.ColumnSpan="2" Background="#A8DADC"
+                FontSize="24"
+                >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Icons/add.png" 
+                       Height="24" 
+                       Margin="0 0 10 0"/>
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    Text="Insert"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="4" 
                 Grid.ColumnSpan="2"
-                Margin="5 0 5 10"/>
-        
-        <Button Content="Delete"
-                Grid.Row="4" 
-                Grid.ColumnSpan="2"
-                Margin="5 0 5 10"/>
-        
+                Background="#FFEA6E77">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Icons/remove.png"
+                       Height="24"
+                       Margin="0 0 10 0"/>
+                <TextBlock VerticalAlignment="Center"
+                           Text="Delete"
+                           FontSize="24"/>
+            </StackPanel>
+        </Button>
+
         <Button Content="Minimum"
-                Grid.Row="5" 
-                Margin="5 0 5 10"/>
+                Grid.Row="5" />
 
         <Button Content="Maximum"
                 Grid.Row="5" 
-                Grid.Column="1"
-                Margin="5 0 5 10"/>
+                Grid.Column="1"/>
 
         <Button Content="Predecessor"
                 Grid.Row="3" 
-                Grid.Column="2"
-                Margin="5 0 5 10"/>
+                Grid.Column="2"/>
 
         <Button Content="Successor"
                 Grid.Row="3" 
-                Grid.Column="3"
-                Margin="5 0 5 10"/>
+                Grid.Column="3"/>
 
         <Button Content="Search"
                 Grid.Row="4" 
                 Grid.Column="2"
-                Grid.ColumnSpan="2"
-                Margin="5 0 5 10"/>
+                Grid.ColumnSpan="2"/>
 
         <Button Content="Print"
                 Grid.Row="5" 
                 Grid.Column="2"
-                Grid.ColumnSpan="2"
-                Margin="5 0 5 10"/>
-
+                Grid.ColumnSpan="2" />
     </Grid>
- 
+
 </Window>
