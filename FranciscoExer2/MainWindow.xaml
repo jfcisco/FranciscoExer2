@@ -61,8 +61,9 @@
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
                    Grid.Row="1"
-                   Margin="0 0 0 10"
-                   d:Text="16 inserted to BST."/>
+                   Margin="0 0 0 5"
+                   d:Text="16 inserted!"
+                   TextWrapping="Wrap"/>
 
 
         <!-- Input Textbox -->
@@ -82,8 +83,10 @@
 
         <!-- Action Buttons -->
         <Button Grid.Row="3" 
-                Grid.ColumnSpan="2" Background="#A8DADC"
+                Grid.ColumnSpan="2"
+                Background="#A8DADC"
                 FontSize="24"
+                Click="Insert_Click"
                 >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Icons/add.png" 
@@ -97,7 +100,8 @@
 
         <Button Grid.Row="4" 
                 Grid.ColumnSpan="2"
-                Background="#FFEA6E77">
+                Background="#FFEA6E77"
+                Click="Delete_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Icons/remove.png"
                        Height="24"
@@ -109,7 +113,8 @@
         </Button>
 
         <Button Content="Minimum"
-                Grid.Row="5" />
+                Grid.Row="5" 
+                Click="Minimum_Click"/>
 
         <Button Content="Maximum"
                 Grid.Row="5" 
@@ -131,7 +136,8 @@
         <Button Content="Print"
                 Grid.Row="5" 
                 Grid.Column="2"
-                Grid.ColumnSpan="2" />
+                Grid.ColumnSpan="2" 
+                Click="Print_Click"/>
     </Grid>
 
 </Window>
