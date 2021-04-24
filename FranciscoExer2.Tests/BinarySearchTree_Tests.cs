@@ -234,6 +234,12 @@ namespace FranciscoExer2.Tests
             Assert.IsFalse(_bst.Contains(3));
         }
 
+        [TestMethod]
+        public void Contains_Failure_EmptyTree()
+        {
+            Assert.IsFalse(_bst.Contains(1));
+        }
+
         // HELPER METHODS
         private void InsertMany(int[] testData)
         {
