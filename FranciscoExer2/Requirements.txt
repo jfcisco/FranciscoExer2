@@ -32,8 +32,8 @@
 			1.2. Delete first instance encountered in the tree?
 	
 	Tasks:
-	- [~] Write tests for Delete method
-	- [~] Implement method
+	- [X] Write tests for Delete method
+	- [X] Implement method
 	- [ ] Revise if assumption is broken
 
 5. Choosing [3] displays the minimum value in the BST. 
@@ -63,8 +63,8 @@
 9. Choosing [7] searches for the value specified by the user. Display a message if the value is not in the BST.
 
 	Tasks:
-	- [ ] Write tests for Search method
-	- [ ] Implement method
+	- [X] Write tests for Search method
+	- [X] Implement method
 
 10. Choosing [8] prints out the contents of the BST in increasing order.
 
