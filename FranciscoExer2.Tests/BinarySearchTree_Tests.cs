@@ -180,6 +180,13 @@ namespace FranciscoExer2.Tests
             _bst.GetPredecessor(0);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void Predecessor_Failure_KeyNotFound()
+        {
+            InsertMany(new int[] { 1, 0, 2 });
+            _bst.GetPredecessor(3);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(PredecessorNotFoundException))]
