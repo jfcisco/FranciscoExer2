@@ -7,12 +7,20 @@
 	[4] Maximum							(Maximum)
 	[5] Successor						(Successor)
 	[6] Predecessor						(Predecessor)
-	[7] Search							(Search)
+	[7] Search							(Contains)
 	[8] Print BST						(Print)
 
 	Tasks: 
 	- [ ] Design window/s
 	- [ ] Draft code-behind
+	- [ ] 	[1] Insert node to binary tree		(Insert)
+	- [ ]	[2] Delete node from binary tree	(Delete)
+	- [ ]	[3] Minimum							(Minimum)
+	- [ ] 	[4] Maximum							(Maximum)
+	- [ ] 	[5] Successor						(Successor)
+	- [ ]	[6] Predecessor						(Predecessor)
+	- [ ]	[7] Search							(Contains)
+	- [ ]	[8] Print BST						(Print)
 2. Start off with an empty tree.
 	Assumption: Ordinary binary search tree?
 
