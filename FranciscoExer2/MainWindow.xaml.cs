@@ -23,7 +23,7 @@ namespace FranciscoExer2
             if (TryGetUserInput(out int valueToInsert)) 
             {
                 Bst.Insert(valueToInsert);
-                Display($"Inserted {valueToInsert}!");
+                Display($"{valueToInsert} inserted!");
             }
         }
 
@@ -34,7 +34,7 @@ namespace FranciscoExer2
                 if (Bst.Contains(valueToDelete))
                 {
                     Bst.Delete(valueToDelete);
-                    Display($"Deleted {valueToDelete}!");
+                    Display($"{valueToDelete} deleted!");
                 }
                 else
                 {
@@ -56,7 +56,77 @@ namespace FranciscoExer2
                 return;
             }
 
-            Display($"The minimum is: {Bst.GetMinimum()}");
+            Display($"The minimum is {Bst.GetMinimum()}.");
+        }
+
+        private void Maximum_Click(object sender, RoutedEventArgs e)
+        {
+            if (Bst.IsEmpty)
+            {
+                Display("Maximum not found because the tree is empty.");
+                return;
+            }
+
+            Display($"The maximum is {Bst.GetMaximum()}.");
+        }
+
+        private void Predecessor_Click(object sender, RoutedEventArgs e)
+        {
+            if (TryGetUserInput(out int value))
+            {
+                if (!Bst.Contains(value))
+                {
+                    Display($"{value} is not in the tree.");
+                    return;
+                }
+
+                try
+                {
+                    int predecessor = Bst.GetPredecessor(value);
+                    Display($"The predecessor of {value} is {predecessor}");
+                }
+                catch(PredecessorNotFoundException)
+                {
+                    Display($"{value} does not have a predecessor!");
+                }
+            }
+        }
+
+        private void Successor_Click(object sender, RoutedEventArgs e)
+        {
+            if (TryGetUserInput(out int value))
+            {
+                if (!Bst.Contains(value))
+                {
+                    Display($"{value} is not in the tree.");
+                    return;
+                }
+
+                try
+                {
+                    int successor = Bst.GetSuccessor(value);
+                    Display($"The successor of {value} is {successor}");
+                }
+                catch(SuccessorNotFoundException)
+                {
+                    Display($"{value} does not have a successor!");
+                }
+            }
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (TryGetUserInput(out int value))
+            {
+                if (Bst.Contains(value))
+                {
+                    Display($"{value} is in the tree!");
+                }
+                else
+                {
+                    Display($"{value} is not in the tree.");
+                }
+            }
         }
 
         /* === Utility Methods === */
