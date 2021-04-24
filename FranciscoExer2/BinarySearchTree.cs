@@ -4,21 +4,28 @@ using System.Text;
 
 namespace FranciscoExer2
 {
-    // My implementation of the Binary Search Tree (BST) data structure.
+    /// <summary>
+    /// Implementation of the Binary Search Tree (BST) data structure.
+    /// </summary>
     public class BinarySearchTree
     {
         private Node Root;
 
-        // Declares an empty tree
+        /// <summary>
+        /// Declares an empty tree.
+        /// </summary>
         public BinarySearchTree() { }
 
-        // Inserts a given value into the BST, maintaining the BST ordering property. The public interface to the recursive Insert method.
+        /// <summary>
+        /// Inserts a given value into the BST, maintaining the BST ordering property. 
+        /// </summary>
+        /// <param name="value"></param>
         public void Insert(int value)
         {
             Insert(ref Root, value);
         }
 
-        // Method overload to insert the value to the BST, recursively.
+        // Recursively inserts the value to the BST.
         private void Insert(ref Node node, int value)
         {
             // Base case: Create a new node if the given node is null.
@@ -37,8 +44,11 @@ namespace FranciscoExer2
             }
         }
 
-        // Returns the minimum value inserted to the BST.
-        // Throws InvalidOperationException if tree is empty.
+        /// <summary>
+        /// Gets the minimum value of the BST.
+        /// </summary>
+        /// <returns>The minimum value of the BST.</returns>
+        /// <exception cref="System.InvalidOperationException">Thrown when the tree is empty</exception>
         public int GetMinimum()
         {
             if (Root == null) { throw new InvalidOperationException("Cannot find minimum if BST is empty.");  }
@@ -46,7 +56,6 @@ namespace FranciscoExer2
             return GetMinimum(Root).Key;
         }
 
-        // Generalized GetMinimum method
         // Returns the node containing the minimum node of a subtree
         private Node GetMinimum(Node root)
         {
@@ -87,7 +96,10 @@ namespace FranciscoExer2
             return current;
         }
 
-        // Returns a string representation of the BST (i.e., lists its elements in ascending order).
+        /// <summary>
+        /// Forms a string representation of the BST.
+        /// </summary>
+        /// <returns>A string listing the nodes' keys in ascending order with commas separating each key.</returns>
         public string Print()
         {
             string toPrint = "";
@@ -122,14 +134,16 @@ namespace FranciscoExer2
             }
         }
 
-        // Deletes the node with a key matching the given value.
+        /// <summary>
+        /// Deletes the first found node in the BST with a key matching the given value.
+        /// </summary>
+        /// <param name="value">Key to be deleted</param>
         public void Delete(int value)
         {
             // Update the Root node
             Root = Delete(Root, value);
         }
 
-        // Private recursive delete method
         // Returns the reference to the node or the new node took its place
         private Node Delete(Node node, int value)
         {
@@ -159,14 +173,12 @@ namespace FranciscoExer2
                     return node.Right;
                 }
 
-                // Case 3: Node has two children (successor has 0 or 1 child).
-                // By this point node.Left and node.Right are not null.
+                // Case 3: Node has two children (successor has 0 or 1 child). By this point node.Left and node.Right are not null.
 
+                // Replace node's key with its successor's:
                 Node delSuccess = GetMinimum(node.Right);
-
                 int tempKey = delSuccess.Key;
-                // TODO: Can make this more elegant, this is a hack:
-                // Delete already covers both cases (0 child and 1 child)
+                // TODO: Is there a way to make this more elegant?
                 Delete(node, delSuccess.Key);
                 node.Key = tempKey;
 
@@ -187,14 +199,17 @@ namespace FranciscoExer2
                 return node;
             }
         }
-        /* Gives the predecessor of the value in the list.
-         * Throws InvalidOperationException if the tree is empty.
-         * Throws KeyNotFound if no node has a key matching the given value.
-         * Throws PredecessorNotFoundException if the given value has no predecessor (i.e., minimum is passed in).
-         */
+
+        /// <summary>
+        /// Finds the predecessor of the value in the tree.
+        /// </summary>
+        /// <param name="value">Value to find the predecessor of</param>
+        /// <returns>Predecessor of the given value</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if no node has a key matching the given value.</exception>
+        /// <exception cref="PredecessorNotFoundException">Thrown if the given value has no predecessor (i.e., minimum is passed in).</exception>
         public int GetPredecessor(int value)
         {
-            if (Root == null) { throw new InvalidOperationException();  }
+            if (Root == null) { throw new KeyNotFoundException();  }
 
             // Search the entire BST for the node with the given value.
             Node node = Search(Root, value);
@@ -222,13 +237,16 @@ namespace FranciscoExer2
             return higherNode ?? throw new PredecessorNotFoundException();
         }
 
-        /* Gives the successor of the value in the list
-           Throws InvalidOperationException if the tree is empty.
-           Throws KeyNotFoundException if the value is not a key in the BST.
-           Throws SuccessorNotFoundException if successor cannot be found.*/
+        /// <summary>
+        /// Finds the successor of the value in the tree.
+        /// </summary>
+        /// <param name="value">Value to find the successor of</param>
+        /// <returns>Successor of the given value</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if the value is not a key in the BST</exception>
+        /// <exception cref="SuccessorNotFoundException">Thrown if successor cannot be found</exception>
         public int GetSuccessor(int value)
         {
-            if (Root == null) { throw new InvalidOperationException(); }
+            if (Root == null) { throw new KeyNotFoundException(); }
 
             // Search the whole subtree for the integer after value in the BST.
             Node node = Search(Root, value);
@@ -280,6 +298,26 @@ namespace FranciscoExer2
             }
         }
 
+        /// <summary>
+        /// Tests if the value is in the BST or not.
+        /// </summary>
+        /// <param name="value">Value to test</param>
+        /// <returns>True if the value is in the BST and False if otherwise.</returns>
+        public bool Contains(int value)
+        {
+            Node matchingNode;
+            try
+            {
+                matchingNode = Search(Root, value);
+            }
+            catch(KeyNotFoundException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         // Searches for the Node with a key matching the given value in the subtree with the given root, or throws a KeyNotFoundException if no such node exists.
         private Node Search(Node root, int value)
         {
@@ -303,10 +341,11 @@ namespace FranciscoExer2
             }
 
         }
-
         bool IsEmpty => Root == null;
 
-        // Nested node class to represent the nodes of the BST.
+        /// <summary>
+        /// Nested node class to represent the nodes of the BST.
+        /// </summary>
         class Node
         {
             public int Key;
